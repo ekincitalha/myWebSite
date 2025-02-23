@@ -28,7 +28,7 @@ const Navigation = () => {
               className={activeTab === 'skills' ? 'active' : ''} 
               onClick={() => scrollToSection('skills')}
             >
-              Yetenekler
+              Skills
             </button>
           </li>
           <li>
@@ -36,15 +36,7 @@ const Navigation = () => {
               className={activeTab === 'experience' ? 'active' : ''} 
               onClick={() => scrollToSection('experience')}
             >
-              Deneyim
-            </button>
-          </li>
-          <li>
-            <button 
-              className={activeTab === 'footer' ? 'active' : ''} 
-              onClick={() => scrollToSection('footer')}
-            >
-              İletişim
+              Portfolio
             </button>
           </li>
         </ul>

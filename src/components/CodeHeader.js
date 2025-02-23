@@ -12,7 +12,6 @@ const CodeHeader = () => {
 const developer = {
   name: 'Talha Ekinci',
   title: 'Full Stack Developer',
-  
   skills: {
     backend: ['Java','C#','Python'],
     frontend: ['React','JavaScript', 'HTML', 'CSS',],
@@ -20,15 +19,6 @@ const developer = {
     database: ['PostgreSQL', 'MySQL','MsSQL'],
     technologies: ['Git', 'Docker', 'Redis','Kafka','Kubernetes']
   },
-
-  education: {
-    university: 'Kirikkale University',
-    degree: 'Computer Engineering',
-    gpa: 3.63,
-    rank: 1
-  },
-
-
 };
 
 `.trim(),
@@ -37,16 +27,40 @@ const developer = {
 // About.js
 
 const about = {
-  summary: 'Passionate Full Stack Developer with 2 years of experience',
-  interests: [
-    'Web Development',
-    'Mobile Development',
-    'System Design',
+  summary: 'I am a passionate Computer Engineer loving increasing my knowledge and never stop learning!',
+  experience: [
+  {
+    company: 'Ministry of Treasury And Finance',
+    position: 'Software Developer',
+    duration: '2022-',
+  },
+  {
+    company: 'Kalemzen Yazilim',
+    position: 'Intern Mobile Developer',
+    duration: '2021-2022',
+  },
+  {
+    company: 'Nero Industry',
+    position: 'Intern Software Developer',
+    duration: '2020-2021',
+  }
   ],
+  education:{
+    university: 'Kirikkale University',
+    degree: 'Computer Engineering',
+    gpa: 3.63,
+    rank: 1
+  },
   languages: {
     Turkish: 'Native',
     English: 'B2'
   },
+  exams: [
+    {
+      name: 'YDS',
+      score: 68,
+    }
+  ]
   hobbies: [
     'Coding',
     'Technology',

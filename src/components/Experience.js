@@ -84,7 +84,7 @@ const Experience = () => {
 
   return (
     <section className="experience" ref={sectionRef}>
-      <h2>Portföyüm</h2>
+      <h2>My Portfolio</h2>
       <div className="experience-container">
         {experiences.map((exp, index) => (
           <div
