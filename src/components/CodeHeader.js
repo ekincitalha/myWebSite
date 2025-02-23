@@ -14,10 +14,11 @@ const developer = {
   title: 'Full Stack Developer',
   
   skills: {
-    languages: ['JavaScript', 'Java', 'HTML', 'CSS','C#'],
-    frontend: ['React'],
-    database: ['PostgreSQL', 'MySQL'],
-    tools: ['Git', 'Docker', 'Redis','Kafka','Kubernetes']
+    backend: ['Java','C#','Python'],
+    frontend: ['React','JavaScript', 'HTML', 'CSS',],
+    mobile: ['Flutter'],
+    database: ['PostgreSQL', 'MySQL','MsSQL'],
+    technologies: ['Git', 'Docker', 'Redis','Kafka','Kubernetes']
   },
 
   education: {
@@ -30,7 +31,6 @@ const developer = {
 
 };
 
-// Feel free to connect!
 `.trim(),
 
     about: `
@@ -63,7 +63,8 @@ const contact = {
     linkedin: 'https://www.linkedin.com/in/talha-ekinci-724b801b2/',
     location: 'Turkiye',
     status: 'Open to new opportunities'
-  
+   // Feel free to contact me!
+
 };`.trim()
   };
 

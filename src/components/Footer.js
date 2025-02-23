@@ -6,23 +6,23 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-info">
-          <h3>İletişim</h3>
-          <p>Email: your.email@example.com</p>
-          <p>Telefon: +90 XXX XXX XX XX</p>
+          <h3>Contact</h3>
+          <p>Email: <a href="mailto:stlmstalha@gmail.com">stlmstalha@gmail.com</a></p>
+          <p>Phone: <a href="tel:+905536998848">05536998848</a></p>
         </div>
         <div className="footer-social">
-          <h3>Sosyal Medya</h3>
+          <h3>Social Media</h3>
           <div className="social-links">
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/ekincitalha" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-github"></i>
             </a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+            <a href="https://linkedin.com/in/talha-ekinci-724b801b2/" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-linkedin"></i>
             </a>
           </div>
         </div>
         <div className="footer-copyright">
-          <p>&copy; 2024 Talha Ekinci. Tüm hakları saklıdır.</p>
+          <p>&copy; 2025 Talha Ekinci.</p>
         </div>
       </div>
     </footer>

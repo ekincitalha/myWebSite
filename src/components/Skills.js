@@ -7,7 +7,8 @@ const Skills = () => {
   const skills = {
     Backend: [
       { name: 'Java (Spring Boot)', level: 85 },
-      { name: 'C#', level: 75 }
+      { name: 'C#', level: 75 },
+      { name: 'Python', level: 60 }
     ],
     Frontend: [
       { name: 'React.js', level: 80 },
@@ -19,13 +20,14 @@ const Skills = () => {
       { name: 'Flutter', level: 70 }
     ],
     Database: [
-      { name: 'MySQL', level: 80 },
-      { name: 'PostgreSQL', level: 75 }
+      { name: 'PostgreSQL', level: 80 },
+      { name: 'MySQL', level: 65 },
+      { name: 'MsSQL', level: 60 }
     ],
     Other: [
       { name: 'Git', level: 85 },
-      { name: 'Agile Methodology', level: 80 }
-    ]
+      { name: 'Agile Methodology', level: 80 },
+         ]
   };
 
   useEffect(() => {

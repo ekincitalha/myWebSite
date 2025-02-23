@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navigation.css';
 
 const Navigation = () => {
+  const [activeTab, setActiveTab] = useState('skills');
+
   const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+    try {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+        setActiveTab(sectionId);
+      }
+    } catch (error) {
+      console.log(`Section ${sectionId} not found`);
     }
   };
 
@@ -16,9 +23,30 @@ const Navigation = () => {
           <span>TALHA EKİNCİ</span>
         </div>
         <ul className="nav-links">
-          <li onClick={() => scrollToSection('skills')}>Skills</li>
-          <li onClick={() => scrollToSection('experience')}>Experience</li>
-          <li onClick={() => scrollToSection('footer')}>Contact</li>
+          <li>
+            <button 
+              className={activeTab === 'skills' ? 'active' : ''} 
+              onClick={() => scrollToSection('skills')}
+            >
+              Yetenekler
+            </button>
+          </li>
+          <li>
+            <button 
+              className={activeTab === 'experience' ? 'active' : ''} 
+              onClick={() => scrollToSection('experience')}
+            >
+              Deneyim
+            </button>
+          </li>
+          <li>
+            <button 
+              className={activeTab === 'footer' ? 'active' : ''} 
+              onClick={() => scrollToSection('footer')}
+            >
+              İletişim
+            </button>
+          </li>
         </ul>
       </div>
     </nav>
