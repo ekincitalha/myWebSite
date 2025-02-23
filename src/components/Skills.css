@@ -1,0 +1,305 @@
+body {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.skills-section {
+  transition: all 0.5s ease;
+  opacity: 1;
+  transform: translateY(0);
+  padding: 6rem 2rem;
+  background: var(--bg-color);
+}
+
+.skills-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--primary-color);
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.skills-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  border-radius: 2px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.skill-category {
+  background: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-category::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.05) 0%, rgba(var(--secondary-rgb), 0.05) 100%);
+  z-index: 0;
+}
+
+.skill-category:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  border-color: rgba(var(--primary-rgb), 0.2);
+}
+
+.skill-category h3 {
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  font-size: 1.6rem;
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.skill-category h3::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.skill-category:hover h3::after {
+  width: 70%;
+}
+
+.skill-item {
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+  padding: 0.5rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+  background: rgba(var(--primary-rgb), 0.05);
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.skill-name {
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skill-percentage {
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 1.1rem;
+  background-image: linear-gradient(
+    45deg, 
+    #FF6B6B 0%, 
+    #4ECDC4 50%,
+    #6c5ce7 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  position: relative;
+}
+
+.skill-bar {
+  background: rgba(0, 0, 0, 0.05);
+  height: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.skill-progress {
+  height: 100%;
+  border-radius: 8px;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  background-size: 200% auto;
+  background-image: linear-gradient(
+    45deg, 
+    #FF6B6B 0%, 
+    #4ECDC4 30%,
+    #45B7D1 60%, 
+    #6c5ce7 100%
+  );
+  animation: gradientMove 3s ease infinite;
+}
+
+.skill-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.15) 100%
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Dark mode özellikleri */
+body.dark-mode .skills-section {
+  background-color: var(--dark-bg);
+}
+
+body.dark-mode .skill-category {
+  background: var(--dark-card-bg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .skill-category:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border-color: rgba(var(--primary-rgb), 0.3);
+}
+
+body.dark-mode .skill-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .skill-bar {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .skill-name {
+  color: var(--dark-text);
+}
+
+@media (max-width: 768px) {
+  .skills-section {
+    padding: 4rem 1rem;
+  }
+
+  .skills-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .skill-category {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+section {
+  scroll-margin-top: 100px;
+}
+
+/* Farklı kategoriler için farklı renkler */
+.skill-category:nth-child(1) .skill-progress {
+  background-image: linear-gradient(45deg, #FF6B6B, #ee5253, #ff9f43);
+}
+
+.skill-category:nth-child(2) .skill-progress {
+  background-image: linear-gradient(45deg, #4ECDC4, #45B7D1, #2e86de);
+}
+
+.skill-category:nth-child(3) .skill-progress {
+  background-image: linear-gradient(45deg, #6c5ce7, #a55eea, #8854d0);
+}
+
+.skill-category:nth-child(4) .skill-progress {
+  background-image: linear-gradient(45deg, #26de81, #20bf6b, #0fb9b1);
+}
+
+.skill-category:nth-child(5) .skill-progress {
+  background-image: linear-gradient(45deg, #f368e0, #ff9ff3, #feca57);
+}
+
+/* Yüzdelik değerler için eşleşen renkler */
+.skill-category:nth-child(1) .skill-percentage {
+  background-image: linear-gradient(45deg, #FF6B6B, #ee5253);
+}
+
+.skill-category:nth-child(2) .skill-percentage {
+  background-image: linear-gradient(45deg, #4ECDC4, #45B7D1);
+}
+
+.skill-category:nth-child(3) .skill-percentage {
+  background-image: linear-gradient(45deg, #6c5ce7, #a55eea);
+}
+
+.skill-category:nth-child(4) .skill-percentage {
+  background-image: linear-gradient(45deg, #26de81, #20bf6b);
+}
+
+.skill-category:nth-child(5) .skill-percentage {
+  background-image: linear-gradient(45deg, #f368e0, #ff9ff3);
+} 

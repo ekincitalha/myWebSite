@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { Header, Navigation,  Skills,  Experience, Footer } from './components';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Navigation />
+      <div style={{ paddingTop: '70px' }}>
+        <Header />
+        <main>
+        
+          <section id="skills">
+            <Skills />
+          </section>
+      
+          <section id="experience">
+            <Experience />
+          </section>
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 }

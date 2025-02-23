@@ -1,0 +1,107 @@
+.code-header {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.editor-tabs {
+  background-color: #252526;
+  display: flex;
+  padding: 0 10px;
+  border-bottom: 1px solid #333;
+}
+
+.tab {
+  padding: 8px 16px;
+  color: #8f8f8f;
+  font-size: 13px;
+  cursor: pointer;
+  border-right: 1px solid #333;
+  transition: background-color 0.2s ease;
+}
+
+.tab:hover {
+  background-color: #2d2d2d;
+  color: #fff;
+}
+
+.tab.active {
+  background-color: #1e1e1e;
+  color: #fff;
+  border-bottom: 2px solid #0078d4;
+}
+
+.editor-main {
+  display: flex;
+  min-height: 500px;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.editor-gutter {
+  padding: 16px 12px;
+  background-color: #1e1e1e;
+  color: #858585;
+  text-align: right;
+  user-select: none;
+  font-size: 14px;
+  border-right: 1px solid #333;
+}
+
+.editor-gutter span {
+  display: block;
+  line-height: 1.5;
+}
+
+.editor-content {
+  flex: 1;
+  padding: 16px;
+  overflow-x: auto;
+}
+
+pre {
+  margin: 0;
+}
+
+code {
+  font-family: inherit;
+  color: #d4d4d4;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+/* Syntax highlighting */
+.comment { color: #6a9955; }
+.string { color: #ce9178; }
+.number { color: #b5cea8; }
+.keyword { color: #569cd6; }
+.function { color: #dcdcaa; }
+.variable { color: #9cdcfe; }
+.property { color: #9cdcfe; }
+
+.editor-footer {
+  padding: 4px 12px;
+  background-color: #007acc;
+  color: #fff;
+  font-size: 12px;
+  display: flex;
+  gap: 16px;
+}
+
+/* Animasyonlar */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: #fff;
+  animation: blink 1s infinite;
+  vertical-align: middle;
+} 

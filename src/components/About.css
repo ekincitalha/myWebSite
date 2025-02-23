@@ -1,0 +1,145 @@
+.about {
+  padding: 6rem 2rem;
+  background-color: var(--bg-color);
+  transition: all 0.5s ease;
+}
+
+.about h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+  color: var(--text-color);
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.about.visible h2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: #3498db;
+}
+
+.about-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-text {
+  margin-bottom: 3rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease 0.2s;
+}
+
+.about.visible .about-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-text .intro {
+  font-size: 1.4rem;
+  color: #3498db;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  transition: color 0.5s ease;
+}
+
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease 0.4s;
+}
+
+.about.visible .skills-container {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-card {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.5s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+}
+
+.skill-icon {
+  font-size: 2.5rem;
+  color: #3498db;
+  margin-bottom: 1rem;
+}
+
+.skill-card h3 {
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.skill-card p {
+  color: var(--text-color);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding: 3rem 1rem;
+  }
+  
+  .skills-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .about-text .intro {
+    font-size: 1.2rem;
+  }
+}
+
+/* CSS variables for theme */
+:root {
+  --bg-color: #f8f9fa;
+  --text-color: #2c3e50;
+  --card-bg: white;
+}
+
+/* Dark mode styles */
+body.dark-mode .about {
+  --bg-color: #1a202c;
+  --text-color: #cbd5e0;
+  --card-bg: #2d3748;
+}
+
+/* Scroll margin */
+section {
+  scroll-margin-top: 100px;
+} 

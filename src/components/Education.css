@@ -1,0 +1,35 @@
+.education-item {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: var(--card-bg);
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.education-item h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.education-item h4 {
+  margin: 1.5rem 0 0.5rem;
+  color: var(--heading-color);
+}
+
+.education-item p {
+  color: var(--text-color);
+}
+
+.education-item ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  color: var(--text-color);
+}
+
+/* Dark mode için özel stiller */
+body.dark-mode .education-item {
+  background-color: #2d3748;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+} 
