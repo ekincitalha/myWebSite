@@ -30,7 +30,10 @@ const AiHeader = () => {
             const yıl = new Date().getFullYear() - talhaInfo.kişisel.başlangıçYılı;
             return `Talha ${yıl} yıldır profesyonel olarak yazılım geliştirici olarak çalışıyor.`;
         }
-
+        // kişisel sorular
+        if (q.includes('iyi') || q.includes('biri')) {
+            return `Talha iyi bir yazılımcıdır.`;
+        }
         // Teknoloji stack'i hakkında sorular
         if (q.includes('teknoloji') || q.includes('yazılım') || q.includes('programlama')) {
             const backEnd = talhaInfo.iş.teknolojiler.filter(t => ['Java', 'Redis', 'Kafka', 'PostgreSQL'].includes(t));
@@ -61,7 +64,7 @@ const AiHeader = () => {
         }
 
         // Genel bilgi soruları
-        if (q.includes('kim') || q.includes('anlat') || q.includes('bahset')) {
+        if (q.includes('kim') || q.includes('anlat') || q.includes('bahset') || q.includes('şu an') || q.includes('ne yapıyor')) {
             return `Talha, ${talhaInfo.kişisel.yaş} yaşında, ${talhaInfo.kişisel.eğitim} mezunu bir yazılım geliştirici. Şu anda ${talhaInfo.kişisel.lokasyon}'da ${talhaInfo.iş.şirket}'nda çalışıyor. Modern teknolojilerle backend, frontend ve DevOps alanlarında geliştirmeler yapıyor.`;
         }
 

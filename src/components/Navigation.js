@@ -7,20 +7,37 @@ const Navigation = () => {
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
+    const navHeight = document.querySelector('.navigation').offsetHeight;
+    
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: elementPosition - navHeight,
+        behavior: 'smooth'
+      });
       setIsMenuOpen(false);
     }
   };
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'skills', 'experience'];
+      const sections = ['home', 'skills', 'showcase-section'];
+      const navHeight = document.querySelector('.navigation').offsetHeight;
+      
       const currentSection = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
+          const topOffset = rect.top - navHeight;
+          const bottomOffset = rect.bottom - navHeight;
+          
+          // Ana sayfa için özel kontrol
+          if (section === 'home') {
+            return topOffset <= 0 && bottomOffset > 0;
+          }
+          
+          // Diğer bölümler için kontrol
+          return topOffset <= 50 && bottomOffset > 50;
         }
         return false;
       });
@@ -31,6 +48,8 @@ const Navigation = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // İlk yüklemede de çalıştır
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -77,11 +96,11 @@ const Navigation = () => {
             Yetenekler
           </a>
           <a 
-            href="#experience" 
-            className={`nav-link ${activeSection === 'experience' ? 'active' : ''}`}
+            href="#showcase-section" 
+            className={`nav-link ${activeSection === 'showcase-section' ? 'active' : ''}`}
             onClick={(e) => {
               e.preventDefault();
-              scrollToSection('experience');
+              scrollToSection('showcase-section');
             }}
           >
             Deneyim

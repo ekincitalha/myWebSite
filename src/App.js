@@ -1,8 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Header, Navigation,  Skills,  Experience, Footer } from './components';
-import ExperienceSlider from './components/ExperienceSlider';
-import ExperienceShowcase from './components/ExperienceShowcase';
+ import ExperienceShowcase from './components/ExperienceShowcase';
 
 function App() {
   return (
@@ -13,7 +12,7 @@ function App() {
         <section id="skills">
           <Skills />
         </section>
-        <section id="experience">
+        <section id="showcase-section" className="showcase-section">
           <ExperienceShowcase />
         </section>
         <Footer />

@@ -1,203 +1,440 @@
 /* Ana container */
-.experience-container {
+.experience-showcase {
   width: 100%;
   min-height: 100vh;
-  background: #0f172a;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 6rem 0;
+  background: #0f172a;
+  position: relative;
+  overflow: hidden;
 }
 
-/* İç container */
-.experience-content {
+.experience-showcase::before {
+  content: '';
+  position: absolute;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(96, 165, 250, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(52, 211, 153, 0.15) 0%, transparent 40%);
+  filter: blur(60px);
+  pointer-events: none;
 }
 
-/* Başlık */
-.experience-header {
+.experience-showcase .experience-content {
+  width: 100%;
+  max-width: var(--container-width-lg);
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.experience-showcase .experience-header {
   margin-bottom: 4rem;
   text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
 }
 
-.experience-header h2 {
-  font-size: 3.5rem;
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.experience-showcase .experience-header h2 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 800;
   color: #fff;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #60a5fa, #34d399);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   letter-spacing: -1px;
 }
 
+.experience-showcase .header-line {
+  width: 120px;
+  height: 4px;
+  background: linear-gradient(135deg, #60a5fa, #34d399);
+  margin: 0 auto;
+  border-radius: 2px;
+  position: relative;
+}
+
+.experience-showcase .header-line::before,
+.experience-showcase .header-line::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #60a5fa;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.experience-showcase .header-line::before {
+  left: -4px;
+}
+
+.experience-showcase .header-line::after {
+  right: -4px;
+  background: #34d399;
+}
+
 /* Ana grid yapısı */
-.experience-grid {
+.experience-showcase .experience-grid {
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 3rem;
-  background: #1e293b;
-  padding: 2rem;
+  background: rgba(30, 41, 59, 0.7);
+  padding: 2.5rem;
   border-radius: 1.5rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease forwards 0.2s;
 }
 
 /* Şirket listesi */
-.company-list {
-  border-right: 2px solid rgba(255, 255, 255, 0.1);
-  padding-right: 2rem;
+.experience-showcase .company-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding-right: 1.5rem;
+  max-height: 600px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.05);
 }
 
-.company-item {
+.experience-showcase .company-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.experience-showcase .company-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+}
+
+.experience-showcase .company-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+.experience-showcase .company-item {
   width: 100%;
   padding: 1.25rem;
   background: transparent;
   border: none;
-  border-left: 3px solid transparent;
   text-align: left;
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin-bottom: 0.5rem;
   border-radius: 0.75rem;
+  position: relative;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slideIn 0.5s ease forwards;
 }
 
-.company-item:hover {
+.experience-showcase .company-item:nth-child(1) { animation-delay: 0.3s; }
+.experience-showcase .company-item:nth-child(2) { animation-delay: 0.4s; }
+.experience-showcase .company-item:nth-child(3) { animation-delay: 0.5s; }
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.experience-showcase .company-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent-color);
+  opacity: 0;
+  transition: all 0.3s ease;
+  border-radius: 0.75rem;
+  z-index: 0;
+}
+
+.experience-showcase .company-item:hover::before {
+  opacity: 0.1;
+}
+
+.experience-showcase .company-item.active {
   background: rgba(255, 255, 255, 0.05);
 }
 
-.company-item.active {
-  background: rgba(96, 165, 250, 0.1);
-  border-left-color: #60a5fa;
+.experience-showcase .company-item.active::before {
+  opacity: 0.15;
 }
 
-.company-name {
-  display: block;
-  font-size: 1.25rem;
+.experience-showcase .company-item-content {
+  position: relative;
+  z-index: 1;
+}
+
+.experience-showcase .company-name {
+  font-size: 1.1rem;
   font-weight: 600;
   color: #fff;
   margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
 }
 
-.company-period {
+.experience-showcase .company-period {
   font-size: 0.9rem;
   color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 /* Detay alanı */
-.details-container {
+.experience-showcase .details-container {
+  padding: 1rem;
   position: relative;
-  min-height: 400px;
 }
 
-.experience-details {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+.experience-showcase .experience-details {
   opacity: 0;
   visibility: hidden;
+  position: absolute;
   transform: translateY(20px);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s ease;
 }
 
-.experience-details.active {
+.experience-showcase .experience-details.active {
   opacity: 1;
   visibility: visible;
+  position: relative;
   transform: translateY(0);
 }
 
-.experience-details h3 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 1.5rem;
-}
-
-.company-tag {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.75rem 1.5rem;
-  background: rgba(96, 165, 250, 0.1);
-  color: #60a5fa;
-  border-radius: 0.75rem;
-  font-size: 1rem;
-  font-weight: 500;
+.experience-showcase .role-header {
   margin-bottom: 2rem;
 }
 
-.description {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #e2e8f0;
-  margin-bottom: 2.5rem;
-}
-
-.skills-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.skill-tag {
-  padding: 0.75rem 1.25rem;
-  background: #2d3748;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0.75rem;
+.experience-showcase .experience-details h3 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
   color: #fff;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--accent-color), #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.experience-showcase .company-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-color);
+  border-radius: 0.75rem;
   font-size: 0.95rem;
   font-weight: 500;
-  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.skill-tag:hover {
-  background: #374151;
+.experience-showcase .description {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+  margin: 2rem 0;
+}
+
+.experience-showcase .skills-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  max-width: 100%;
+  margin-top: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.experience-showcase .skills-list::-webkit-scrollbar {
+  height: 4px;
+}
+
+.experience-showcase .skills-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+}
+
+.experience-showcase .skills-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+.experience-showcase .skill-tag {
+  padding: 0.4rem 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.experience-showcase .skill-tag:nth-child(1) { animation-delay: 0.1s; }
+.experience-showcase .skill-tag:nth-child(2) { animation-delay: 0.2s; }
+.experience-showcase .skill-tag:nth-child(3) { animation-delay: 0.3s; }
+.experience-showcase .skill-tag:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.experience-showcase .skill-tag:hover {
+  background: rgba(255, 255, 255, 0.1);
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
-  .experience-grid {
+@media screen and (max-width: 960px) {
+  .experience-showcase {
+    padding: 4rem 0;
+  }
+
+  .experience-showcase .experience-content {
+    padding: 0 1.5rem;
+  }
+
+  .experience-showcase .experience-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+    padding: 2rem;
   }
 
-  .company-list {
-    border-right: none;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    padding: 0 0 1rem 0;
-    display: flex;
+  .experience-showcase .company-list {
+    flex-direction: row;
     overflow-x: auto;
-    gap: 1rem;
+    overflow-y: hidden;
+    padding: 0.5rem;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    max-height: none;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
 
-  .company-item {
+  .experience-showcase .company-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .experience-showcase .company-item {
     flex: 0 0 auto;
-    min-width: 200px;
-    border-left: none;
-    border-bottom: 3px solid transparent;
+    min-width: 220px;
+    padding: 1rem 1.25rem;
   }
 
-  .company-item.active {
-    border-bottom-color: #60a5fa;
+  .experience-showcase .details-container {
+    padding: 0;
   }
 
-  .details-container {
-    min-height: 300px;
+  .experience-showcase .experience-details.active {
+    padding-top: 1rem;
+  }
+
+  .experience-showcase .skills-list {
+    gap: 0.4rem;
+  }
+
+  .experience-showcase .skill-tag {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.8rem;
   }
 }
 
-@media (max-width: 640px) {
-  .experience-content {
-    padding: 2rem 1rem;
+@media screen and (max-width: 720px) {
+  .experience-showcase {
+    padding: 3rem 0;
   }
 
-  .experience-header h2 {
-    font-size: 2.5rem;
+  .experience-showcase .experience-grid {
+    padding: 1.5rem;
   }
 
-  .experience-details h3 {
-    font-size: 2rem;
+  .experience-showcase .company-item {
+    min-width: 180px;
   }
 
-  .company-item {
-    min-width: 160px;
+  .experience-showcase .experience-details h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
   }
+
+  .experience-showcase .description {
+    font-size: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .experience-showcase .skills-list {
+    gap: 0.3rem;
+  }
+
+  .experience-showcase .skill-tag {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+}
+
+.experience-section {
+  width: 100%;
+  min-height: 100vh;
+  padding: clamp(2rem, 5vw, 4rem) 0;
+  overflow: hidden;
+}
+
+.experience-container {
+  width: 100%;
+  max-width: var(--container-width-lg);
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+  display: grid;
+  grid-template-columns: minmax(200px, 300px) 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  height: auto;
+  overflow: visible;
+}
+
+.company-list {
+  overflow-y: auto;
+  max-height: 70vh;
+  padding-right: 1rem;
+}
+
+.details-container {
+  overflow: visible;
+  height: auto;
 } 

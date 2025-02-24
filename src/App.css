@@ -39,24 +39,27 @@
 
 .app {
   min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   background-color: var(--bg-secondary);
 }
 
 main {
-  flex: 1;
   width: 100%;
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
 }
 
 section {
-  margin: 0;
-  padding: 4rem 2rem;
-  background-color: var(--bg-primary);
-  box-shadow: none;
-  border-radius: 0;
+  width: 100%;
+  padding: 6rem var(--container-padding);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 section:nth-child(even) {
@@ -64,19 +67,23 @@ section:nth-child(even) {
 }
 
 section > * {
-  max-width: 1200px;
+  width: 100%;
+  max-width: var(--container-width-lg);
   margin: 0 auto;
 }
 
 h2 {
   color: var(--heading-color);
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   text-align: center;
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 2.5rem);
 }
 
 body {
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.7;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 body.dark-mode {
@@ -86,18 +93,22 @@ body.dark-mode {
   --bg-secondary: #2d3748;
   background-color: var(--dark-bg);
   color: var(--dark-text);
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 body.dark-mode section {
   background-color: var(--dark-bg);
+  transition: background-color 0.5s ease;
 }
 
 body.dark-mode section:nth-child(even) {
   background-color: var(--dark-card-bg);
+  transition: background-color 0.5s ease;
 }
 
 body.dark-mode .skill-category {
   background-color: var(--dark-card-bg);
+  transition: background-color 0.5s ease, transform 0.3s ease;
 }
 
 :root {
@@ -105,21 +116,105 @@ body.dark-mode .skill-category {
   --text-color: #4a5568;
   --bg-primary: #ffffff;
   --bg-secondary: #f8f9fa;
-  
-  /* Light mode variables */
-  --bg-color: #ffffff;
-  --card-bg: #ffffff;
   --primary-color: #4a90e2;
   --secondary-color: #6c5ce7;
   --primary-rgb: 74, 144, 226;
   --secondary-rgb: 108, 92, 231;
-
-  /* Dark mode variables */
   --dark-bg: #1a202c;
   --dark-card-bg: #2d3748;
   --dark-text: #e2e8f0;
+  --container-width-lg: 1200px;
+  --container-width-md: 960px;
+  --container-width-sm: 720px;
+  --container-padding: 2rem;
 }
 
 p {
   color: var(--text-color);
+  font-size: clamp(1rem, 2vw, 1.1rem);
 }
+
+.showcase-section {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: #0f172a;
+}
+
+/* Temel stiller */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Responsive düzenlemeler */
+@media screen and (max-width: 1200px) {
+  :root {
+    --container-padding: 1.5rem;
+  }
+
+  section > * {
+    max-width: var(--container-width-md);
+  }
+}
+
+@media screen and (max-width: 960px) {
+  :root {
+    --container-padding: 1.2rem;
+  }
+
+  section {
+    padding: 4rem var(--container-padding);
+  }
+
+  section > * {
+    max-width: var(--container-width-sm);
+  }
+}
+
+@media screen and (max-width: 720px) {
+  :root {
+    --container-padding: 1rem;
+  }
+
+  section {
+    padding: 3rem var(--container-padding);
+  }
+
+  section > * {
+    max-width: 100%;
+  }
+}
+
+/* Utility classes */
+.container {
+  width: 100%;
+  max-width: var(--container-width-lg);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    max-width: var(--container-width-md);
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .container {
+    max-width: var(--container-width-sm);
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .container {
+    max-width: 100%;
+  }
+}
+

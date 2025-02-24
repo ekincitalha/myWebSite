@@ -19,18 +19,18 @@
 }
 
 .nav-logo {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #fff;
   text-decoration: none;
-  background: linear-gradient(45deg, #60a5fa, #3b82f6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer !important;
+  position: relative;
+  padding: 0.5rem;
 }
 
 .nav-logo:hover {
-  opacity: 0.9;
+  color: #60a5fa;
 }
 
 .nav-links {
@@ -42,11 +42,12 @@
 .nav-link {
   color: #e2e8f0;
   text-decoration: none;
-  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer !important;
   font-weight: 500;
-  padding: 0.5rem 0;
   position: relative;
-  transition: color 0.3s ease;
 }
 
 /* Hover efekti - alttan çizgi */
@@ -57,12 +58,13 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(45deg, #60a5fa, #3b82f6);
+  background: #60a5fa;
   transition: width 0.3s ease;
 }
 
 .nav-link:hover {
   color: #fff;
+  background: rgba(96, 165, 250, 0.1);
 }
 
 .nav-link:hover::after {
@@ -72,6 +74,7 @@
 /* Aktif link stili */
 .nav-link.active {
   color: #60a5fa;
+  background: rgba(96, 165, 250, 0.1);
 }
 
 .nav-link.active::after {
@@ -85,8 +88,13 @@
   border: none;
   color: #e2e8f0;
   font-size: 1.5rem;
-  cursor: pointer;
+  cursor: pointer !important;
   padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.menu-button:hover {
+  color: #60a5fa;
 }
 
 /* Responsive tasarım */
