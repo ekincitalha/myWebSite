@@ -1,45 +1,92 @@
-import React, { useState } from 'react';
-import './Navigation.css';
+import React, { useState, useEffect } from 'react';
+import '../styles/Navigation.css';
 
 const Navigation = () => {
-  const [activeTab, setActiveTab] = useState('skills');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   const scrollToSection = (sectionId) => {
-    try {
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
-        setActiveTab(sectionId);
-      }
-    } catch (error) {
-      console.log(`Section ${sectionId} not found`);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsMenuOpen(false);
     }
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'skills', 'experience'];
+      const currentSection = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+      
+      if (currentSection) {
+        setActiveSection(currentSection);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <nav className="navigation">
       <div className="nav-content">
-        <div className="logo">
-          <span>TALHA EKİNCİ</span>
+        <a 
+          href="#home" 
+          className="nav-logo"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection('home');
+          }}
+        >
+          Talha Ekinci
+        </a>
+        
+        <button 
+          className="menu-button"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <i className={`fas fa-${isMenuOpen ? 'times' : 'bars'}`}></i>
+        </button>
+
+        <div className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
+          <a 
+            href="#home" 
+            className={`nav-link ${activeSection === 'home' ? 'active' : ''}`}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('home');
+            }}
+          >
+            Ana Sayfa
+          </a>
+          <a 
+            href="#skills" 
+            className={`nav-link ${activeSection === 'skills' ? 'active' : ''}`}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('skills');
+            }}
+          >
+            Yetenekler
+          </a>
+          <a 
+            href="#experience" 
+            className={`nav-link ${activeSection === 'experience' ? 'active' : ''}`}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('experience');
+            }}
+          >
+            Deneyim
+          </a>
         </div>
-        <ul className="nav-links">
-          <li>
-            <button 
-              className={activeTab === 'skills' ? 'active' : ''} 
-              onClick={() => scrollToSection('skills')}
-            >
-              Skills
-            </button>
-          </li>
-          <li>
-            <button 
-              className={activeTab === 'experience' ? 'active' : ''} 
-              onClick={() => scrollToSection('experience')}
-            >
-              Portfolio
-            </button>
-          </li>
-        </ul>
       </div>
     </nav>
   );

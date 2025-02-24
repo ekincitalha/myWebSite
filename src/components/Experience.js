@@ -9,9 +9,9 @@ const Experience = () => {
       duration: "",
       tech: "C#, .NET, SQL Server",
       description: "",
-      url: "https://www.elzembilisim.com.tr/",
+     // url: "https://www.elzembilisim.com.tr/",
       bgColor: "linear-gradient(135deg, #1a365d 0%, #2d4a7e 100%)",
-      websitePreview: "https://www.elzembilisim.com.tr/",
+     // websitePreview: "https://www.elzembilisim.com.tr/",
     
     },
     {
@@ -20,9 +20,9 @@ const Experience = () => {
       duration: "",
       tech: "Flutter, Dart, Firebase",
       description: "",
-      url: "https://mobikap.com.tr/",
+     // url: "https://mobikap.com.tr/",
       bgColor: "linear-gradient(135deg, #2d3748 0%, #4a5568 100%)",
-      websitePreview: "https://mobikap.com.tr/",
+    //  websitePreview: "https://mobikap.com.tr/",
    
     },
     {
@@ -31,9 +31,9 @@ const Experience = () => {
       duration: "",
       tech: "Java, Spring Boot, React, PostgreSQL",
       description: "",
-      url: "https://techproeducation.com",
+     // url: "https://techproeducation.com",
       bgColor: "linear-gradient(135deg, #2C5282 0%, #4299E1 100%)",
-      websitePreview: "https://techproeducation.com",
+     // websitePreview: "https://techproeducation.com",
      
     },
     {
@@ -42,9 +42,9 @@ const Experience = () => {
       duration: "",
       tech: "Java, Spring Boot, MySQL, Docker",
       description: "",
-      url: "https://example.com",
+      //url: "https://example.com",
       bgColor: "linear-gradient(135deg, #2D3748 0%, #4A5568 100%)",
-      websitePreview: "https://example.com",
+      //websitePreview: "https://example.com",
   
     }
   ];

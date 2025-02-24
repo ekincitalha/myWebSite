@@ -1,12 +1,12 @@
 import React from 'react';
-import CodeHeader from './CodeHeader';
+import AiHeader from './AiHeader';
 import './Header.css';
 
 const Header = () => {
   return (
-    <header className="header">
+    <header className="header" id="home">
       <div className="header-content">
-        <CodeHeader />
+        <AiHeader />
       </div>
     </header>
   );

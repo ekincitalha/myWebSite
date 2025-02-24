@@ -1,0 +1,203 @@
+/* Ana container */
+.experience-container {
+  width: 100%;
+  min-height: 100vh;
+  background: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* İç container */
+.experience-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+/* Başlık */
+.experience-header {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.experience-header h2 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -1px;
+}
+
+/* Ana grid yapısı */
+.experience-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 3rem;
+  background: #1e293b;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Şirket listesi */
+.company-list {
+  border-right: 2px solid rgba(255, 255, 255, 0.1);
+  padding-right: 2rem;
+}
+
+.company-item {
+  width: 100%;
+  padding: 1.25rem;
+  background: transparent;
+  border: none;
+  border-left: 3px solid transparent;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 0.5rem;
+  border-radius: 0.75rem;
+}
+
+.company-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.company-item.active {
+  background: rgba(96, 165, 250, 0.1);
+  border-left-color: #60a5fa;
+}
+
+.company-name {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.company-period {
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+/* Detay alanı */
+.details-container {
+  position: relative;
+  min-height: 400px;
+}
+
+.experience-details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.experience-details.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.experience-details h3 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.company-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background: rgba(96, 165, 250, 0.1);
+  color: #60a5fa;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+  margin-bottom: 2.5rem;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.skill-tag {
+  padding: 0.75rem 1.25rem;
+  background: #2d3748;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  background: #374151;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .experience-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .company-list {
+    border-right: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 0 0 1rem 0;
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+  }
+
+  .company-item {
+    flex: 0 0 auto;
+    min-width: 200px;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+  }
+
+  .company-item.active {
+    border-bottom-color: #60a5fa;
+  }
+
+  .details-container {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .experience-content {
+    padding: 2rem 1rem;
+  }
+
+  .experience-header h2 {
+    font-size: 2.5rem;
+  }
+
+  .experience-details h3 {
+    font-size: 2rem;
+  }
+
+  .company-item {
+    min-width: 160px;
+  }
+} 
