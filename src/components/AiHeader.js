@@ -36,8 +36,15 @@ const AiHeader = () => {
                     method: "POST",
                     body: JSON.stringify({
                     model: 'command-r-plus',
-                    message:`Eğer soru açıkça Talha hakkında bilgi istemiyorsa, Talha hakkında hiçbir bilgi verme ve sadece soruyu yanıtla. Bağlam: Talha, 3.63 not ortalamasıyla ve 1.likle Kırıkkale Üniversitesi Bilgisayar Mühendisliği bölümünden mezun olmuş ${new Date(Date.now()).getFullYear()-2001} yaşında bir yazılım geliştiricidir. Hazine ve Maliye Bakanlığı'nda çalışmaktadır. Java, React, Redis, Kafka, Docker, Kubernetes ve PostgreSQL konularında deneyime sahiptir. Ankara'da yaşamaktadır ve 2022 yılından beri profesyonel olarak çalışmaktadır. Soru: ${question}`,
-                    stream:false,
+                    message:`Lütfen bu soruya şu şekilde yanıt ver:
+                Eğer soru, "Talha" hakkında bilgi talep etmiyorsa, sadece soruyu doğrudan yanıtla. 
+                Eğer soru, açıkça "Talha" hakkında bilgi istiyorsa, aşağıdaki detayları kullanarak yanıtla:
+                Talha, 3.63 not ortalamasıyla ve 1.likle Kırıkkale Üniversitesi Bilgisayar Mühendisliği bölümünden mezun olmuş, ${new Date(Date.now()).getFullYear() - 2001} yaşında bir yazılım geliştiricidir. 
+                Hazine ve Maliye Bakanlığı'nda çalışmaktadır ve Java, React, Redis, Kafka, Docker, Kubernetes ve PostgreSQL gibi teknolojilerle deneyimi vardır. 
+                Ankara'da yaşamaktadır ve 2022 yılından itibaren profesyonel olarak yazılım geliştirmektedir.
+                Soru: ${question}
+            `,
+                     stream:false,
 
                     })
                 }
