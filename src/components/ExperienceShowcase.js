@@ -14,7 +14,7 @@ const ExperienceShowcase = () => {
       company: "BTGM",
       role: "Full-Stack Developer",
       period: "2022 - Present",
-      description: "Web tabanlı kurumsal uygulamalar geliştirdim. Backend ve frontend süreçlerinde aktif rol aldım. Ayrıca, yazılım geliştirme yaşam döngüsünün her aşamasına dahil oldum, gereksinim analizinden tasarım ve kodlamaya kadar birçok süreçte yer aldım. Sürekli iyileştirme sağlamak amacıyla Agile metodolojisini benimsedim. Takım içinde efektif bir işbirliği sağlayarak, kullanıcı dostu ve yüksek performanslı uygulamalar geliştirdim.",
+      description:"Web tabanlı kurumsal uygulamalar geliştiriyorum. Backend ve frontend süreçlerinde aktif rol alıyorum. Yazılım geliştirme yaşam döngüsünün her aşamasına dahil olup, gereksinim analizinden tasarım ve kodlamaya kadar birçok süreçte yer alıyorum. Sürekli iyileştirme sağlamak amacıyla Agile metodolojisini benimsiyorum. Takım içinde efektif bir işbirliği sağlayarak, kullanıcı dostu ve yüksek performanslı uygulamalar geliştiriyorum." ,
       skills: ["Java", "Spring Boot", "React", "PostgreSQL"],
       color: "#60a5fa"
     },
@@ -22,7 +22,7 @@ const ExperienceShowcase = () => {
       company: "Kalemzen",
       role: "Flutter Developer Intern",
       period: "2022-2022",
-      description: "Mobil uygulama geliştirme ve UI/UX tasarım süreçlerinde deneyim kazandım. Flutter ile hem iOS hem de Android platformları için yüksek performanslı ve görsel olarak etkileyici mobil uygulamalar geliştirdim. Kullanıcı odaklı tasarım yaparak, kullanıcı geri bildirimlerini dikkate alarak uygulamaların performansını ve deneyimini sürekli iyileştirdim.",
+      description: "Mobil uygulama geliştirme ve UI/UX tasarım süreçlerinde deneyim kazandım. Flutter ile Android platform için yüksek performanslı ve görsel olarak etkileyici mobil uygulamalar geliştirdim. Kullanıcı odaklı tasarım yaparak, kullanıcı geri bildirimlerini dikkate alarak uygulamaların performansını ve deneyimini sürekli iyileştirdim.",
       skills: ["Flutter", "Dart", "Firebase"],
       color: "#34d399"
     },

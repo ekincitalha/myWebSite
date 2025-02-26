@@ -4,74 +4,6 @@ import '../styles/AiHeader.css';
 const AiHeader = () => {
     const [question, setQuestion] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-
-    // Talha hakkında bilgi tabanı
-    const talhaInfo = {
-        kişisel: {
-            yaş: 23,
-            lokasyon: 'Ankara',
-            eğitim: 'Kırıkkale Üniversitesi Bilgisayar Mühendisliği',
-            başlangıçYılı: 2022,
-            ortalama:3.63
-        },
-        iş: {
-            şirket: 'Hazine ve Maliye Bakanlığı',
-            pozisyon: 'Yazılım Geliştirici',
-            teknolojiler: ['Java', 'React', 'Redis', 'Kafka', 'Docker', 'Kubernetes', 'PostgreSQL']
-        }
-    };
-
-    // Akıllı cevap oluşturucu
-    const generateAnswer = (question) => {
-        const q = question.toLowerCase();
-        
-        // Deneyim hesaplama
-        if (q.includes('kaç yıl') || q.includes('ne kadar') || q.includes('tecrübe')) {
-            const yıl = new Date().getFullYear() - talhaInfo.kişisel.başlangıçYılı;
-            return `Talha ${yıl} yıldır profesyonel olarak yazılım geliştirici olarak çalışıyor.`;
-        }
-        // kişisel sorular
-        if (q.includes('iyi') || q.includes('biri')) {
-            return `Talha iyi bir yazılımcıdır.`;
-        }
-        // Teknoloji stack'i hakkında sorular
-        if (q.includes('teknoloji') || q.includes('yazılım') || q.includes('programlama')) {
-            const backEnd = talhaInfo.iş.teknolojiler.filter(t => ['Java', 'Redis', 'Kafka', 'PostgreSQL'].includes(t));
-            const frontEnd = talhaInfo.iş.teknolojiler.filter(t => ['React'].includes(t));
-            const devOps = talhaInfo.iş.teknolojiler.filter(t => ['Docker', 'Kubernetes'].includes(t));
-
-            return `Talha backend'de ${backEnd.join(', ')}, frontend'de ${frontEnd.join(', ')}, ve DevOps tarafında ${devOps.join(', ')} teknolojileriyle çalışıyor.`;
-        }
-
-        // Eğitim bilgisi
-        if (q.includes('okul') || q.includes('üniversite') || q.includes('mezun') || q.includes('eğitim')) {
-            return `Talha ${talhaInfo.kişisel.ortalama} ortalama ile ${talhaInfo.kişisel.eğitim} mezunu. Burada aldığı eğitimle yazılım mühendisliği kariyerine başladı.`;
-        }
-
-        // İş ve kariyer
-        if (q.includes('çalış') || q.includes('iş') || q.includes('kariyer') || q.includes('meslek')) {
-            return `Talha şu anda ${talhaInfo.iş.şirket}'nda ${talhaInfo.iş.pozisyon} olarak çalışıyor. Modern yazılım teknolojileriyle kurumsal projeler geliştiriyor.`;
-        }
-
-        // Yaş ve kişisel bilgiler
-        if (q.includes('yaş') || q.includes('kaç yaşında')) {
-            return `Talha ${talhaInfo.kişisel.yaş} yaşında, kariyerinin başında bir yazılım geliştirici.`;
-        }
-
-        // Lokasyon
-        if (q.includes('nerede') || q.includes('şehir') || q.includes('yaşı')) {
-            return `Talha ${talhaInfo.kişisel.lokasyon}'da yaşıyor ve çalışıyor. ${talhaInfo.iş.şirket}'nda görev yapıyor.`;
-        }
-
-        // Genel bilgi soruları
-        if (q.includes('kim') || q.includes('anlat') || q.includes('bahset') || q.includes('şu an') || q.includes('ne yapıyor')) {
-            return `Talha, ${talhaInfo.kişisel.yaş} yaşında, ${talhaInfo.kişisel.eğitim} mezunu bir yazılım geliştirici. Şu anda ${talhaInfo.kişisel.lokasyon}'da ${talhaInfo.iş.şirket}'nda çalışıyor. Modern teknolojilerle backend, frontend ve DevOps alanlarında geliştirmeler yapıyor.`;
-        }
-
-        // Varsayılan cevap
-        return `Üzgünüm, bu konuda net bir bilgim yok. Talha'nın eğitimi, iş deneyimi, teknoloji stack'i veya kişisel bilgileri hakkında sorular sorabilirsiniz.`;
-    };
-
     const handleQuestionSubmit = async (e) => {
         e.preventDefault();
         if (!question.trim() || isLoading) return;
@@ -91,16 +23,31 @@ const AiHeader = () => {
         chatHistory.appendChild(loadingMessage);
 
         setIsLoading(true);
-
+        const API_URL =  "https://api.cohere.ai/v1/chat";
+      
         try {
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            
-            // Akıllı cevap oluştur
-            const answer = generateAnswer(question);
+            const response = await fetch(
+                API_URL,
+                {
+                    headers: {
+                        Authorization: `Bearer ${process.env.REACT_APP_COHERE_API_KEY}`,
+                        "Content-Type": "application/json",
+                    },
+                    method: "POST",
+                    body: JSON.stringify({
+                    model: 'command-r-plus',
+                    message:`Eğer soru açıkça Talha hakkında bilgi istemiyorsa, Talha hakkında hiçbir bilgi verme ve sadece soruyu yanıtla. Bağlam: Talha, 3.63 not ortalamasıyla ve 1.likle Kırıkkale Üniversitesi Bilgisayar Mühendisliği bölümünden mezun olmuş ${new Date(Date.now()).getFullYear()-2001} yaşında bir yazılım geliştiricidir. Hazine ve Maliye Bakanlığı'nda çalışmaktadır. Java, React, Redis, Kafka, Docker, Kubernetes ve PostgreSQL konularında deneyime sahiptir. Ankara'da yaşamaktadır ve 2022 yılından beri profesyonel olarak çalışmaktadır. Soru: ${question}`,
+                    stream:false,
 
+                    })
+                }
+            );
+
+            const data = await response.json();
+            console.log(data)
+            const answer = data.text || 'Üzgünüm, şu anda cevap veremiyorum.';
             // Loading mesajını kaldır
             chatHistory.removeChild(loadingMessage);
-
             // AI cevabını ekle
             const aiMessage = document.createElement('div');
             aiMessage.className = 'chat-message ai-message';
@@ -108,8 +55,8 @@ const AiHeader = () => {
             chatHistory.appendChild(aiMessage);
 
         } catch (error) {
-            console.error('Error details:', error);
-            loadingMessage.textContent = `Üzgünüm, bir hata oluştu: ${error.message}`;
+            console.error('Error:', error);
+            loadingMessage.textContent = 'Üzgünüm, bir hata oluştu. Lütfen tekrar deneyin.';
         } finally {
             setIsLoading(false);
         }
@@ -124,7 +71,7 @@ const AiHeader = () => {
                 <div className="ai-chat-container">
                     <div className="chat-history" id="chatHistory">
                         <div className="chat-message ai-message">
-                            Merhaba! Ben Talha'nın AI asistanıyım. Talha hakkında istediğiniz soruyu sorabilirsiniz.
+                            Merhaba! Ben bir AI asistanım. Bana istediğiniz soruyu sorabilirsiniz.
                         </div>
                     </div>
                     <form onSubmit={handleQuestionSubmit} className="chat-input">
@@ -132,7 +79,7 @@ const AiHeader = () => {
                             type="text"
                             value={question}
                             onChange={(e) => setQuestion(e.target.value)}
-                            placeholder="Örn: Talha'nın uzmanlık alanları neler?"
+                            placeholder="Sormak istediğiniz soruyu yazın..."
                             disabled={isLoading}
                         />
                         <button type="submit" disabled={isLoading}>

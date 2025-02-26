@@ -80,16 +80,23 @@
   text-decoration: none;
   transition: all 0.3s ease;
   font-size: 0.95rem;
+  cursor: pointer !important;
 }
 
 .social-link:hover {
   background: rgba(255, 255, 255, 0.1);
   transform: translateY(-2px);
+  color: #fff;
 }
 
 .social-link i {
   font-size: 1rem;
   color: #60a5fa;
+  pointer-events: none;
+}
+
+.social-link span {
+  pointer-events: none;
 }
 
 .copyright {
