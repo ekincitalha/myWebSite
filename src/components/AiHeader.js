@@ -32,13 +32,13 @@ const AiHeader = () => {
         setQuestion(suggestion);
         setShowSuggestions(false);
     };
-
     const handleQuestionSubmit = async (e) => {
         e.preventDefault();
         if (!question.trim() || isLoading) return;
 
         const chatHistory = document.getElementById('chatHistory');
-        
+        console.log(chatHistory)
+
         // Kullanıcı mesajını ekle
         const userMessage = document.createElement('div');
         userMessage.className = 'chat-message user-message';
