@@ -105,7 +105,7 @@ const AiHeader = () => {
                 <div className="ai-chat-container">
                     <div className="chat-history" id="chatHistory">
                         <div className="chat-message ai-message">
-                            Merhaba! Ben bir AI asistanım. Bana istediğiniz soruyu sorabilirsiniz.
+                            Merhaba! Ben bir AI asistanım. Bana Talha hakkında veya istediğiniz soruyu sorabilirsiniz.
                         </div>
                     </div>
                     <form onSubmit={handleQuestionSubmit} className="chat-input">
