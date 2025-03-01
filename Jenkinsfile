@@ -18,6 +18,24 @@ pipeline {
                 }
             }
         }
+         stages {
+        stage('Install Dependencies') {
+            steps {
+                script {
+                    // Bağımlılıkları yükleyin
+                    sh 'yarn install'
+                }
+            }
+        }
+
+        stage('Build React App') {
+            steps {
+                script {
+                    // React uygulamasını build edin
+                    sh 'yarn build'
+                }
+            }
+        }
         stage('Build Docker Image') {
             steps {
                 script {
