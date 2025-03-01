@@ -3,6 +3,7 @@ import './Skills.css';
 
 const Skills = () => {
   const sectionRef = useRef(null);
+  const refValue = sectionRef.current;
 
   const skills = {
     Backend: [
@@ -33,7 +34,7 @@ const Skills = () => {
   useEffect(() => {
     const handleDarkMode = (entries) => {
       entries.forEach(entry => {
-        const { intersectionRatio, boundingClientRect, rootBounds } = entry;
+        const {  boundingClientRect, rootBounds } = entry;
         
         // Calculate how much of the section is visible in the viewport
         const visibleHeight = Math.min(boundingClientRect.bottom, rootBounds.bottom) -
@@ -56,13 +57,13 @@ const Skills = () => {
       rootMargin: '0px'
     });
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (refValue) {
+      observer.observe(refValue);
     }
 
     // Handle resize events to update dark mode based on new screen size
     const handleResize = () => {
-      if (sectionRef.current) {
+      if (refValue) {
         const entry = observer.takeRecords()[0];
         if (entry) {
           handleDarkMode([entry]);
@@ -73,8 +74,8 @@ const Skills = () => {
     window.addEventListener('resize', handleResize);
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (refValue) {
+        observer.unobserve(refValue);
       }
       window.removeEventListener('resize', handleResize);
     };
