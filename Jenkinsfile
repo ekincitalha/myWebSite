@@ -18,13 +18,16 @@ pipeline {
                 }
             }
         }
-        stage('Build Docker Image') {
-            steps {
-                script {
-                     docker.build("talhaekinci/mywebsite-app:latest", 'C:\\Users\\Win10\\Desktop\\Yeni klasör (2)\\myWebSite')
-                }
+      stage('Build Docker Image') {
+    steps {
+        script {
+            withDocker {
+                docker.build("talhaekinci/mywebsite-app:latest", 'C:\\Users\\Win10\\Desktop\\Yeni klasör (2)\\myWebSite')
             }
         }
+    }
+}
+
 
         // stage('Push Docker Image') {
         //     steps {
