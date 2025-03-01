@@ -14,15 +14,14 @@ pipeline {
         stage('Check Docker Version') {
             steps {
                 script {
-                    def dockerVersion = "docker --version".execute().text
-                    println dockerVersion
+                   powershell 'docker --version'
                 }
             }
         }
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build("talhaekinci/mywebsite-app:latest")
+                     docker.build("talhaekinci/mywebsite-app:latest", 'C:\\Users\\Win10\\Desktop\\Yeni klasör (2)\\myWebSite')
                 }
             }
         }
