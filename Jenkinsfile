@@ -32,16 +32,16 @@ pipeline {
             }
         }
 
-        stage('Deploy to Server') {
-            steps {
-                script {
-                    // Docker container'ını çalıştırıyoruz (remote sunucuda)
-                    sh """
-                    ssh -o StrictHostKeyChecking=no user@your-server-ip 'docker pull talhaekinci/mywebsite-app:${env.BUILD_ID} && docker run -d -p 80:3000 --name react-app talhaekinci/mywebsite-app:${env.BUILD_ID}'
-                    """
-                }
-            }
-        }
+        // stage('Deploy to Server') {
+        //     steps {
+        //         script {
+        //             // Docker container'ını çalıştırıyoruz (remote sunucuda)
+        //             sh """
+        //             ssh -o StrictHostKeyChecking=no user@your-server-ip 'docker pull talhaekinci/mywebsite-app:${env.BUILD_ID} && docker run -d -p 80:3000 --name react-app talhaekinci/mywebsite-app:${env.BUILD_ID}'
+        //             """
+        //         }
+        //     }
+        // }
     }
 
     post {
