@@ -1,12 +1,9 @@
 pipeline {
     agent any
-
-    environment {
-        // NodeJS ile çalışacak ortam
-        NODE_HOME = tool name: 'NodeJS', type: 'NodeJSInstallation'
-        PATH = "${NODE_HOME}/bin:${env.PATH}"
-    }
-
+    tools {
+            nodejs 'NodeJS' // Daha önce Global Tool Configuration'da verdiğiniz adı kullanın
+        }
+   
     stages {
         stage('Checkout') {
             steps {
