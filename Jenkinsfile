@@ -11,7 +11,14 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/ekincitalha/myWebSite.git'
             }
         }
-
+        stage('Check Docker Version') {
+            steps {
+                script {
+                    def dockerVersion = "docker --version".execute().text
+                    println dockerVersion
+                }
+            }
+        }
         stage('Build Docker Image') {
             steps {
                 script {
