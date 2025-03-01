@@ -26,15 +26,16 @@ pipeline {
             }
         }
 
-        stage('Push Docker Image') {
-            steps {
-                script {
-                    docker.withRegistry('https://index.docker.io/v1/', 'docker-credit') {
-                        docker.image("talhaekinci/mywebsite-app:latest").push()
-                    }
-                }
-            }
-        }
+        // stage('Push Docker Image') {
+        //     steps {
+        //         script {
+        //             docker.withRegistry('https://index.docker.io/v1/', 'docker-credit') {
+        //                 docker.image("talhaekinci/mywebsite-app:latest").push()
+        //             }
+        //         }
+        //     }
+        // }
+        
 
         // stage('Deploy to Server') {
         //     steps {
