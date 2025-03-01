@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     // Docker imajını Docker Hub'a push ediyoruz
-                    docker.withRegistry('https://index.docker.io/v1/', 'docker-hub-credentials') {
+                    docker.withRegistry('https://index.docker.io/v1/', 'docker-credit') {
                         docker.image("talhaekinci/mywebsite-app:latest").push()
                     }
                 }
