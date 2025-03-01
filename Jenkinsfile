@@ -23,7 +23,7 @@ pipeline {
             steps {
                 script {
                     // Bağımlılıkları yükleyin
-                    sh 'yarn install'
+                    bat 'yarn install'
                 }
             }
         }
@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     // React uygulamasını build edin
-                    sh 'yarn build'
+                    bat 'yarn build'
                 }
             }
         }
