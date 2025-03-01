@@ -21,7 +21,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                     docker.build('talhaekinci/mywebsite-app:latest', 'C:\\Users\\Win10\\Desktop\\Yeni klasör (2)\\myWebSite')
+                     docker.build('talhaekinci/mywebsite-app:latest')
                 }
             }
         }
