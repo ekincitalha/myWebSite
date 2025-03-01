@@ -12,25 +12,25 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    // Docker image'ını build ediyoruz
-                    docker.build("talhaekinci/mywebsite-app:latest")
-                }
-            }
-        }
+        // stage('Build Docker Image') {
+        //     steps {
+        //         script {
+        //             // Docker image'ını build ediyoruz
+        //             docker.build("talhaekinci/mywebsite-app:latest")
+        //         }
+        //     }
+        // }
 
-        stage('Push Docker Image') {
-            steps {
-                script {
-                    // Docker imajını Docker Hub'a push ediyoruz
-                    docker.withRegistry('https://index.docker.io/v1/', 'docker-credit') {
-                        docker.image("talhaekinci/mywebsite-app:latest").push()
-                    }
-                }
-            }
-        }
+        // stage('Push Docker Image') {
+        //     steps {
+        //         script {
+        //             // Docker imajını Docker Hub'a push ediyoruz
+        //             docker.withRegistry('https://index.docker.io/v1/', 'docker-credit') {
+        //                 docker.image("talhaekinci/mywebsite-app:latest").push()
+        //             }
+        //         }
+        //     }
+        // }
 
         // stage('Deploy to Server') {
         //     steps {
