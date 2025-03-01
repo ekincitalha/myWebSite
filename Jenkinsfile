@@ -1,7 +1,8 @@
 pipeline {
     agent any
     tools {
-            nodejs 'NodeJS' // Daha önce Global Tool Configuration'da verdiğiniz adı kullanın
+            nodejs 'NodeJS'
+            docker 'Docker' // Daha önce Global Tool Configuration'da verdiğiniz adı kullanın
         }
    
     stages {
