@@ -79,7 +79,7 @@ const Skills = () => {
       }
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [refValue]);
 
   return (
     <section className="skills-section" ref={sectionRef}>

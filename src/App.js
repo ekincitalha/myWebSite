@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import { Header, Navigation,  Skills,  Experience, Footer } from './components';
- import ExperienceShowcase from './components/ExperienceShowcase';
+import { Header, Navigation, Skills, Footer } from './components';
+import ExperienceShowcase from './components/ExperienceShowcase';
 
 function App() {
   return (
