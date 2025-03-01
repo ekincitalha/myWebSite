@@ -8,7 +8,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Git reposunu çekiyoruz
-                git 'https://github.com/ekincitalha/myWebSite.git'
+                git branch: 'main', url: 'https://github.com/ekincitalha/myWebSite.git'
             }
         }
 
