@@ -14,8 +14,7 @@ pipeline {
         stage('Check Docker Version') {
             steps {
                 script {
-                    def dockerVersion = "docker --version".execute().text
-                    println dockerVersion
+                   powershell 'docker --version'
                 }
             }
         }
