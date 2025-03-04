@@ -3,7 +3,6 @@ import './Skills.css';
 
 const Skills = () => {
   const sectionRef = useRef(null);
-  const refValue = sectionRef.current;
 
   const skills = {
     Backend: [
@@ -57,13 +56,13 @@ const Skills = () => {
       rootMargin: '0px'
     });
 
-    if (refValue) {
-      observer.observe(refValue);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
 
     // Handle resize events to update dark mode based on new screen size
     const handleResize = () => {
-      if (refValue) {
+      if (sectionRef.current) {
         const entry = observer.takeRecords()[0];
         if (entry) {
           handleDarkMode([entry]);
@@ -74,12 +73,12 @@ const Skills = () => {
     window.addEventListener('resize', handleResize);
 
     return () => {
-      if (refValue) {
-        observer.unobserve(refValue);
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
       }
       window.removeEventListener('resize', handleResize);
     };
-  }, [refValue]);
+  }, []);
 
   return (
     <section className="skills-section" ref={sectionRef}>
